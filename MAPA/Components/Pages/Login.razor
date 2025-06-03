@@ -4,15 +4,58 @@
 @layout LoginLayout
 @using MAPA.Components.Layout
 
+<div class="login-container">
+    <div class="login-box">
+        <img src="image/geoPulse.png" class="logo" alt="GeoPulse" />
 
-<h1>Hello, Login!</h1>
-<button @onclick="NavigateToPage">Ir a otra página</button>
+        <input type="text" placeholder="Usuario" @bind="username" class="input" />
+        <input type="password" placeholder="Contraseña" @bind="password" class="input" />
+
+        <button class="btn-login" @onclick="LoginUser">Iniciar sesión</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+@* <div class="login-background">
+    <div class="login-panel">
+        <div class="logo-section">
+            <img src="image/geoPulse.png" alt="GPS Logo" class="logo" />
+            <h1 class="app-title">Iniciar Sesion</h1>
+        </div>
+
+        <div class="form-group">
+            <label>Usuario</label>
+            <input type="text" @bind="username" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" @bind="password" class="form-control" />
+        </div>
+
+        <button class="btn-login" @onclick="LoginUser">Iniciar sesión</button>
+    </div>
+</div> *@
+
+@* <button @onclick="NavigateToPage">Ir a otra página</button> *@
 
 
 
 @code {
-    void NavigateToPage()
+    private string username;
+    private string password;
+
+    private void LoginUser()
     {
-        Navigation.NavigateTo("/home");
+        // Aquí va tu lógica de autenticación
+        if (username == "admin" && password == "admin")
+        {
+            Navigation.NavigateTo("/home");
+        }
     }
 }
