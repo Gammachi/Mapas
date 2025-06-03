@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Mapa - GeoPulse Control</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 100px; /* Deja espacio para el panel inferior */
+            z-index: 0;
+        }
+
+        .bottom-panel {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1e2a38f0; /* gris azulado semitransparente */
+            color: white;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 15px 20px;
+            box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .info-box {
+            flex: 1;
+            padding: 0 15px;
+            border-right: 1px solid #34495e;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+            .info-box:last-child {
+                border-right: none;
+            }
+
+        .info-title {
+            font-weight: bold;
+            color: #00aaff;
+            margin-bottom: 4px;
+        }
+
+            .info-title i {
+                margin-right: 6px;
+                color: #81cfff;
+            }
+
+        .info-box a {
+            color: #00aaff;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+            .info-box a:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <div class="bottom-panel">
+        <div class="info-box">
+            <div class="info-title"><i class="bi bi-geo-alt-fill"></i> Ubicación</div>
+            Lat: 22.1565<br>
+            Lng: -100.9855<br>
+            Dirección: Parque Tangamanga I, SLP
+        </div>
+
+        <div class="info-box">
+            <div class="info-title"><i class="bi bi-speedometer2"></i> Velocidad</div>
+            0 km/h<br>
+            Último reporte: 10:42 AM
+        </div>
+
+        <div class="info-box">
+            <div class="info-title"><i class="bi bi-cpu"></i> Estado del Motor</div>
+            ENCENDIDO<br>
+            Tiempo encendido: 15h 32m
+        </div>
+
+        <div class="info-box">
+            <div class="info-title"><i class="bi bi-reception-4"></i> Señal</div>
+            ✔ Disponible<br>
+            Última conexión: hace 5 min
+        </div>
+
+       
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([22.1565, -100.9855], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        L.marker([22.1565, -100.9855]).addTo(map)
+            .bindPopup('Ubicación central.')
+            .openPopup();
+    </script>
+</body>
+</html>

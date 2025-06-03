@@ -1,27 +1,94 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿<div class="top-row ps-3 navbar ">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">GeoPulse</a>
+        <a class="navbar-brand" href="">
+            🛰️ GeoPulse Control
+        </a>
     </div>
 </div>
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
-
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
+<div class="nav-scrollable">
+    <nav class="nav-menu flex-column">
+        <div class="nav-item-custom">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+                <i class="bi bi-activity me-2"></i> Historial
             </NavLink>
         </div>
-        <div class="nav-item px-3">
+        <div class="nav-item-custom">
             <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
+                <i class="bi bi-broadcast-pin me-2"></i> Geo Cerca
             </NavLink>
         </div>
-        <div class="nav-item px-3">
+        <div class="nav-item-custom">
             <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
+                <i class="bi bi-terminal-dash me-2"></i> Ajustes
+            </NavLink>
+        </div>
+        <div class="nav-item-custom">
+            <NavLink class="nav-link" href="alerta">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i> Alerta
+            </NavLink>
+        </div>
+        <div class="nav-item-custom">
+            <NavLink class="nav-link" href="usuario">
+                <i class="bi bi-person-badge-fill me-2"></i> Usuario
             </NavLink>
         </div>
     </nav>
 </div>
+
+
+
+            <style>
+                .top-row {
+    background-color: #1e2a38; /* gris azulado sólido */
+    padding: 1rem;
+    height: -1rem;
+    display: flex;
+
+    align-items: start;
+
+    border-bottom: 1px solid #fff;
+}
+
+    .nav-scrollable {
+        background-color: #1b2836;
+        min-height: 100vh;
+        padding: 1.5rem 1rem;
+    }
+
+    .nav-menu {
+        margin-top: 1rem;
+    }
+
+    .nav-item-custom {
+        margin-bottom: 1.2rem;
+    }
+
+    .nav-link {
+        display: flex;
+        align-items: center;
+        color: #d1dbe3;
+        font-size: 0.95rem;
+        padding: 0.6rem 1rem;
+        border-radius: 6px;
+        transition: background-color 0.2s ease, color 0.2s ease;
+        font-weight: 500;
+    }
+
+        .nav-link i {
+            font-size: 1.1rem;
+            color: #81a1c1;
+        }
+
+        .nav-link:hover {
+            background-color: #243447;
+            color: white;
+        }
+
+        .nav-link.active {
+            background-color: #005b96;
+            color: #fff;
+            font-weight: 600;
+        }
+
+</style>
