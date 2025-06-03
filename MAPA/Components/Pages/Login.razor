@@ -1,8 +1,18 @@
 ﻿@page "/"
+@inject NavigationManager Navigation
+
 @layout LoginLayout
 @using MAPA.Components.Layout
 
 
 <h1>Hello, Login!</h1>
+<button @onclick="NavigateToPage">Ir a otra página</button>
 
-Welcome to your new app.
+
+
+@code {
+    void NavigateToPage()
+    {
+        Navigation.NavigateTo("/home");
+    }
+}
