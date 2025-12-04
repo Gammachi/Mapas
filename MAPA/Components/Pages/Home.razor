@@ -1,11 +1,16 @@
 ﻿@page "/home"
-
+@using System.Linq
+@* @inject C2ALocationService LocationService *@
+@inject IJSRuntime JS
 
 
 <div class="map-container">
-    <iframe src="leafletmap.html"
+   @* <iframe src="leafletmap.html"
             style="width: 100vw; height: 100vh; border: none; display: block; overflow: hidden;">
-    </iframe>
+    </iframe>  *@
+    
+    @* <div id="map" style="width: 100vw; height: 100vh; border: none; display: block; overflow: hidden;"></div> *@
+    <div @ref="_mapDiv" style="width:100%; height:100vh;"></div>
 </div>
 <style>
     html, body {
@@ -28,3 +33,38 @@
         display: block;
     }
 </style>
+@code{
+    private ElementReference _mapDiv;
+    private bool _mapInitialized;
+    private List<MapPoint> _points = new()
+    {
+        new MapPoint { Lat = 22.1565, Lng = -100.9855, Label = "Ubicación central" },
+        new MapPoint { Lat = 22.16,   Lng = -100.99,   Label = "Punto extra" }
+    };
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // 2. Tomar el primer punto como centro
+            /// var center = _points.First();
+            var center = _points.FirstOrDefault()
+                         ?? new MapPoint { Lat = 22.1565, Lng = -100.9855, Label = "Centro" };
+
+            await JS.InvokeVoidAsync(
+                "geoMap.initMap",
+                _mapDiv,
+                center.Lat,
+                center.Lng,
+                13,
+                _points
+            );
+        }
+    }
+    public class MapPoint
+    {
+        public double Lat { get; set; }
+        public double Lng { get; set; }
+        public string Label { get; set; }
+    }
+
+}
